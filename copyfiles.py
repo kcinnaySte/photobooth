@@ -20,13 +20,13 @@ while True:
 
         if ".delete" in os.listdir(targetpath):
             os.remove(targetpath + ".delete")
-            #print ("Alle Daten werden geloescht")
+            print ("Alle Daten werden geloescht")
             logfile = open(targetpath + "del.txt","w")
             logfile.write("Loeschen hat begonnen\n")
             for file in directory:
                 copyfile(sourcepath + file, targetpath + file )
                 os.remove(sourcepath + file)
-                #print ("Datei " + file + " geloscht!")
+                print ("Datei " + file + " geloscht!")
                 logfile.write("Datei " + file + " kopiert und geloscht\n")
             logfile.write("*** Vorgang abgeschlossen ***\n")
             logfile.close()
@@ -35,5 +35,5 @@ while True:
             #print ("TryCopy")
             for file in directory:
                 copyfile(sourcepath + file, targetpath + file )
-                #print ("Datei " + sourcepath + file + " kopiert nach " + targetpath + file ) 
+                print ("Datei " + sourcepath + file + " kopiert nach " + targetpath + file ) 
     time.sleep(10)

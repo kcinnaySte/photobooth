@@ -18,7 +18,7 @@ case "$1" in
   start)
     echo "Starting usbcopy"
     # run application you want to start
-    python /home/pi/copyfiles.py
+    python /home/pi/copyfiles.py > /home/pi/usbcopy.log
     ;;
   stop)
     echo "Stopping usbcopy"

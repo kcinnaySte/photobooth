@@ -52,7 +52,7 @@ echo "dhcp-range=10.2.1.10,10.2.1.200,12h" >> /etc/dnsmasq.conf
 
 #Setup automount
 sudo apt-get -y install ntfs-3g
-cd ~
+cd /home/pi
 wget https://raw.githubusercontent.com/kcinnaySte/photobooth/master/copyfiles.py
 wget https://raw.githubusercontent.com/kcinnaySte/photobooth/master/usbcopy
 chmod ugo+x ./usbcopy
