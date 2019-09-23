@@ -1,7 +1,7 @@
 #/bin/bash
 
 sudo apt-get update
-sudo apt-get -y install git apache2 php php-gd ffmpeg
+sudo apt-get -y install git apache2 php php-gd ffmpeg motion
 cd /var/www
 sudo rm -r html/
 sudo git clone https://github.com/kcinnayste/photobooth html
@@ -36,7 +36,7 @@ echo "@chromium-browser --incognito --kiosk http://localhost/ --touch-events=ena
 echo "@unclutter -idle 0" >> /etc/xdg/lxsession/LXDE-pi/autostart
 
 echo "Die IP-Adresse lautet:"
-fconfig | grep eth0 -A 1 | grep -P -o "(?<=inet )\d+\.\d+\.\d+\.\d+"^C
+ifconfig | grep eth0 -A 1 | grep -P -o "(?<=inet )\d+\.\d+\.\d+\.\d+"^C
 
 echo "System startet nun neu"
 
