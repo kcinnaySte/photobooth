@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 sudo apt-get update
 sudo apt-get -y install git apache2 php php-gd ffmpeg motion
@@ -34,6 +34,31 @@ echo "@xset -dpms" >> /etc/xdg/lxsession/LXDE-pi/autostart
 echo "@xset s noblank" >> /etc/xdg/lxsession/LXDE-pi/autostart
 echo "@chromium-browser --incognito --kiosk http://localhost/ --touch-events=enabled" >> /etc/xdg/lxsession/LXDE-pi/autostart
 echo "@unclutter -idle 0" >> /etc/xdg/lxsession/LXDE-pi/autostart
+
+#Setup Router
+sudo apt-get -y install hostapd dnsmasq
+echo "auto lo
+iface lo inet loopback
+iface eth0 inet dhcp
+
+auto wlan0
+iface wlan0 inet static
+  address 10.2.1.1
+  netmask 255.255.255.0
+  wireless-channel 1
+  wireless-essid Fotobox
+  wireless-mode ad-hoc" > /etc/network/interfaces.d/adhoc
+echo "dhcp-range=10.2.1.10,10.2.1.200,12h" >> /etc/dnsmasq.conf
+
+#Setup automount
+sudo apt-get -y install ntfs-3g
+cd ~
+wget https://raw.githubusercontent.com/kcinnaySte/photobooth/master/copyfiles.py
+wget https://raw.githubusercontent.com/kcinnaySte/photobooth/master/usbcopy
+chmod ugo+x ./usbcopy
+mv ./usbcopy /etc/init.d/usbcopy
+update-rc.d usbcopy defaults
+
 
 echo "Die IP-Adresse lautet:"
 ifconfig | grep eth0 -A 1 | grep -P -o "(?<=inet )\d+\.\d+\.\d+\.\d+"^C
