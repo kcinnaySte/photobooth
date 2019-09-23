@@ -8,15 +8,15 @@
 $config = array();
 $sys['os'] = (DIRECTORY_SEPARATOR == '\\') || (strtolower(substr(PHP_OS, 0, 3)) === 'win') ? 'windows' : 'linux';
 $config['dev'] = false;
-$config['use_print'] = false;
+$config['use_print'] = true;
 $config['use_qr'] = true;
-$config['print_qrcode'] = true;
+$config['print_qrcode'] = false;
 $config['print_frame'] = false;
 $config['use_mail'] = false; // mail data needs to be configured
 $config['use_mobile_view'] = false;
 $config['use_gpio_button'] = false; // Use alt+p to take a new picture, can be triggered via GPIO24
-$config['show_fork'] = true;
-$config['previewFromCam'] = false; // experimental see https://github.com/andreknieriem/photobooth/pull/30
+$config['show_fork'] = false;
+$config['previewFromCam'] = true; // experimental see https://github.com/andreknieriem/photobooth/pull/30
 $config['file_format_date'] = false;
 $config['cntdwn_time'] = '5'; // control countdown timer
 $config['cheese_time'] = '1000'; // control time for cheeeeese!
@@ -32,8 +32,8 @@ $config['bluegray_theme'] = false;
 $config['language'] = 'de';
 
 // StartScreen
-$config['start_screen_title'] = 'Photobooth';
-$config['start_screen_subtitle'] = 'Webinterface by André Rinas';
+$config['start_screen_title'] = 'Fotobox';
+$config['start_screen_subtitle'] = 'von Thomas Luther';
 
 // FOLDERS
 // change the folders to whatever you like
